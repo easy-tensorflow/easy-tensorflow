@@ -29,7 +29,7 @@ One of the reason that we installed Anaconda is that (on Windows) we need python
 
   `conda create -n tensorflow python=3.5`
 
-    * It will ask for installing new packages. Insert “y”.
+  3. It will ask for installing new packages. Insert “y”.
 
       ![Alt text](files/conda_env_y.png)
 
