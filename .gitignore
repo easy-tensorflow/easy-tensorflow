@@ -102,3 +102,4 @@ ENV/
 
 .DS_Store
 MNIST_data/
+.idea
