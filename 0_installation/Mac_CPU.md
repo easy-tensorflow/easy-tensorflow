@@ -1,8 +1,8 @@
-# Installing Tensorflow with CPU for Windows
+# Installing Tensorflow with CPU for Mac
 
 ## Requirements
 
-* Python 3.5
+There is no requirment, but we suggest to use python 3 for the rest of the tutorial.
 
 ## 1. Install Anaconda
 
@@ -18,17 +18,15 @@ The first thing you need to install the Tensorflow is to have the Anaconda distr
     ![Alt text](files/dl_ver.png)
 
  4. Follow the instructions on installation from https://docs.anaconda.com/anaconda/install/
-    * Make sure to add Anaconda to my PATH environment variable.
 
-    ![Alt text](files/dl_path.png)
 
 ## 2. Create Anaconda Environment:
 
-One of the reason that we installed Anaconda is that (on Windows) we need python 3.5 to install the Tensorflow. So, go ahead and create an environment with python 3.5:
-  1. Open command prompt 
+One of the reason that we installed Anaconda is that (on Windows) we need python 3.5 to install the Tensorflow. So, go ahead and create an environment with python 3:
+  1. Open command prompt
   2. Create a new environment:
 
-  `conda create -n tensorflow python=3.5`
+  `conda create -n tensorflow python=3`
 
   3. It will ask for installing new packages. Insert “y”.
 
@@ -37,10 +35,10 @@ One of the reason that we installed Anaconda is that (on Windows) we need python
 ## 3. Install Tensorflow:
 Now that we have created the environment, we should activate it:
 
-  `acativate tensorflow`
+  `source acativate tensorflow`
 
   * In this case your name of environment (which we named it tensorflow) will show in the beginning of the line.
-  ![Alt text](files/cmd_change.png)
+  ![Alt text](files/mac_cmd_change.png)
 
 
 Now that the environment is activated we can go ahead and install the tensorflow:
@@ -50,7 +48,7 @@ Now that the environment is activated we can go ahead and install the tensorflow
 ### Notes:
 Always activate the environment before launching any editor.
 
-`activate tensorflow`
+`source activate tensorflow`
 
 There are some useful packages that we highly suggest to install:
 
@@ -59,4 +57,4 @@ There are some useful packages that we highly suggest to install:
 
 
 
-	
+
