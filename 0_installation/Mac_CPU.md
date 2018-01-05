@@ -52,7 +52,7 @@ Always activate the environment before launching any editor.
 
 There are some useful packages that we highly suggest to install:
 
-`pip install matplotlib numpy jupyter`
+`pip install matplotlib jupyter pillow`
 
 
 
