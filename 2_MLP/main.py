@@ -2,11 +2,10 @@
 import tensorflow as tf
 import numpy as np
 from ops import fc_layer
-from utils import plot_example_errors
+from utils import *
 
 # Import MNIST data
 from tensorflow.examples.tutorials.mnist import input_data
-
 mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
 
 print("Size of:")
@@ -55,9 +54,10 @@ init = tf.global_variables_initializer()
 # Launch the graph (session)
 with tf.Session() as sess:
     sess.run(init)
+    # Number of training iterations in each epoch
     num_tr_iter = int(mnist.train.num_examples / batch_size)
     for epoch in range(epochs):
-        print('Training epoch: {}'.format(epoch))
+        print('Training epoch: {}'.format(epoch+1))
         for iteration in range(num_tr_iter):
             batch_x, batch_y = mnist.train.next_batch(batch_size)
 
@@ -80,13 +80,19 @@ with tf.Session() as sess:
               format(epoch + 1, loss_valid, acc_valid))
         print('---------------------------------------------------------')
 
+
     # Test the network after training
+    # Accuracy
     feed_dict_test = {x: mnist.test.images, y: mnist.test.labels}
     loss_test, acc_test = sess.run([loss, accuracy], feed_dict=feed_dict_test)
+    print('---------------------------------------------------------')
     print("Test loss: {0:.2f}, test accuracy: {1:.01%}".format(loss_test, acc_test))
+    print('---------------------------------------------------------')
 
-    # Plot some of the misclassified examples
+    # Plot some of the correct and misclassified examples
     cls_pred = sess.run(cls_prediction, feed_dict=feed_dict_test)
     cls_true = np.argmax(mnist.test.labels, axis=1)
-    plot_example_errors(mnist.test.images, cls_true, cls_pred)
+    plot_images(mnist.test.images, cls_true, cls_pred, title='Correct Examples')
+    plot_example_errors(mnist.test.images, cls_true, cls_pred, title='Misclassified Examples')
+    plt.show()
 
