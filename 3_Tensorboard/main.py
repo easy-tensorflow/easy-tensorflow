@@ -8,15 +8,15 @@ from utils import plot_example_errors
 from tensorflow.examples.tutorials.mnist import input_data
 
 mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
-logs_path = "./graph/"
 print("Size of:")
 print("- Training-set:\t\t{}".format(len(mnist.train.labels)))
 print("- Test-set:\t\t{}".format(len(mnist.test.labels)))
 print("- Validation-set:\t{}".format(len(mnist.validation.labels)))
 
 # hyper-parameters
+logs_path = "./logs/"  # path to the folder that we want to save the logs for Tensorboard
 learning_rate = 0.001  # The optimization learning rate
-epochs = 20  # Total number of training epochs
+epochs = 10  # Total number of training epochs
 batch_size = 100  # Training batch size
 display_freq = 100  # Frequency of displaying the training results
 
@@ -42,17 +42,18 @@ fc1 = fc_layer(x, h1, 'Hidden_layer', use_relu=True)
 output_logits = fc_layer(fc1, n_classes, 'Output_layer', use_relu=False)
 
 # Define the loss function, optimizer, and accuracy
-with tf.variable_scope('Loss'):
-    loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y, logits=output_logits), name='loss')
-    tf.summary.scalar('loss', loss)
-with tf.variable_scope('optimizer'):
-    optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate, name='Adam-op').minimize(loss)
-with tf.variable_scope('accuracy'):
-    correct_prediction = tf.equal(tf.argmax(output_logits, 1), tf.argmax(y, 1), name='correct_pred')
-    accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32), name='accuracy')
-    tf.summary.scalar('accuracy', accuracy)
-    # Network predictions
-    cls_prediction = tf.argmax(output_logits, axis=1, name='predictions')
+with tf.variable_scope('Train'):
+    with tf.variable_scope('Loss'):
+        loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y, logits=output_logits), name='loss')
+        tf.summary.scalar('loss', loss)
+    with tf.variable_scope('Optimizer'):
+        optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate, name='Adam-op').minimize(loss)
+    with tf.variable_scope('Accuracy'):
+        correct_prediction = tf.equal(tf.argmax(output_logits, 1), tf.argmax(y, 1), name='correct_pred')
+        accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32), name='accuracy')
+        tf.summary.scalar('accuracy', accuracy)
+        # Network predictions
+        cls_prediction = tf.argmax(output_logits, axis=1, name='predictions')
 
 # Initializing the variables
 init = tf.global_variables_initializer()
