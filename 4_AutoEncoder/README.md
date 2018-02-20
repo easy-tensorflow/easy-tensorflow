@@ -10,8 +10,8 @@ __Autoencoder__ also helps us to understand how the neural networks work. We can
 
 
 In this tutorial we will implement:
-1. Autoencoder for noise removal
-2. Visualization of a node's activation
+1. Autoencoder for noise removal (AE_noiseRemoval.ipynb)
+2. Visualization of a node's activation (AE_visActivation)
 
 ## References:
 * [www.tensorflow.com](www.tensorflow.com)
