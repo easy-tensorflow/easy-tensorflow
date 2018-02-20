@@ -29,7 +29,7 @@ def plot_images(original_images, noisy_images, reconstructed_images):
         ax.set_title(col)
 
     fig.tight_layout()
-    plt.show()
+    plt.show(block=False)
 
 
 def plot_max_active(x):
@@ -37,7 +37,7 @@ def plot_max_active(x):
     Plots the images that are maximally activating the hidden units
     :param x: numpy array of size [input_dim, num_hidden_units]
     """
-    fig, axes = plt.subplots(nrows=10, ncols=10)
+    fig, axes = plt.subplots(nrows=10, ncols=10, figsize=(9, 9))
     fig.subplots_adjust(hspace=.1, wspace=0)
     img_h = img_w = np.sqrt(x.shape[0]).astype(int)
     for i, ax in enumerate(axes.flat):
@@ -47,4 +47,4 @@ def plot_max_active(x):
         ax.set_yticks([])
         ax.set_yticklabels([])
         ax.set_xticklabels([])
-    plt.show()
+    plt.show(block=False)

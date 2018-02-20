@@ -46,8 +46,8 @@ with tf.variable_scope('Input'):
 fc1, W1 = fc_layer(x_noisy, h1, 'Hidden_layer', use_relu=True)
 out, W2 = fc_layer(fc1, img_size_flat, 'Output_layer', use_relu=False)
 
-x_active = W1 / tf.sqrt(tf.reduce_sum(tf.square(W1), axis=0))
-# [784, 100]
+# calculate the activation
+h_active = W1 / tf.sqrt(tf.reduce_sum(tf.square(W1), axis=0)) # [784, 100]
 
 # Define the loss function, optimizer, and accuracy
 with tf.variable_scope('Train'):
@@ -114,8 +114,8 @@ with tf.Session() as sess:
     plot_images(x_test, x_test_noisy, x_reconstruct)
 
     # Plot the images that maximally activate the hidden units
-    plot_max_active(sess.run(x_active))
-
+    plot_max_active(sess.run(h_active))
+    plt.show()
 
 
 
