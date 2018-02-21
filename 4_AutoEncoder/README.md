@@ -13,8 +13,8 @@ __Autoencoder__ is neural networks that tries to __reconstruct the input data__.
 
 
 In this tutorial we will implement:
-1. __Denoising autoencoder__ (AE_noiseRemoval.ipynb):
-2. __Visualizing activation of nodes in hidden layer__ (AE_visActivation.ipynb)
+1. __Denoising autoencoder__ (1_noiseRemoval.ipynb):
+2. __Visualizing activation of nodes in hidden layer__ (2_visActivation.ipynb)
 
 ## References:
 * [www.tensorflow.com](www.tensorflow.com)
