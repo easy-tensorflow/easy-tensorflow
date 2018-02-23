@@ -1,8 +1,10 @@
 # imports
+import os
 import tensorflow as tf
 import numpy as np
 from ops import fc_layer
-from utils import plot_example_errors
+from utils import *
+from tensorflow.contrib.tensorboard.plugins import projector
 
 # Import MNIST data
 from tensorflow.examples.tutorials.mnist import input_data
@@ -14,7 +16,7 @@ print("- Test-set:\t\t{}".format(len(mnist.test.labels)))
 print("- Validation-set:\t{}".format(len(mnist.validation.labels)))
 
 # hyper-parameters
-logs_path = "./logs/"  # path to the folder that we want to save the logs for Tensorboard
+logs_path = "./logs/full"  # path to the folder that we want to save the logs for TensorBoard
 learning_rate = 0.001  # The optimization learning rate
 epochs = 10  # Total number of training epochs
 batch_size = 100  # Training batch size
@@ -37,7 +39,9 @@ h1 = 200
 # Placeholders for inputs (x), outputs(y)
 with tf.variable_scope('Input'):
     x = tf.placeholder(tf.float32, shape=[None, img_size_flat], name='X')
+    tf.summary.image('input_image', tf.reshape(x, (-1, img_w, img_h, 1)), max_outputs=5)
     y = tf.placeholder(tf.float32, shape=[None, n_classes], name='Y')
+
 fc1 = fc_layer(x, h1, 'Hidden_layer', use_relu=True)
 output_logits = fc_layer(fc1, n_classes, 'Output_layer', use_relu=False)
 
@@ -65,7 +69,7 @@ with tf.Session() as sess:
     train_writer = tf.summary.FileWriter(logs_path, sess.graph)
     num_tr_iter = int(mnist.train.num_examples / batch_size)
     global_step = 0
-    for epoch in range(epochs):
+    for epoch in range(epochs + 1):
         print('Training epoch: {}'.format(epoch))
         for iteration in range(num_tr_iter):
             batch_x, batch_y = mnist.train.next_batch(batch_size)
@@ -90,13 +94,46 @@ with tf.Session() as sess:
               format(epoch + 1, loss_valid, acc_valid))
         print('---------------------------------------------------------')
 
-    # Test the network after training
-    feed_dict_test = {x: mnist.test.images, y: mnist.test.labels}
-    loss_test, acc_test = sess.run([loss, accuracy], feed_dict=feed_dict_test)
-    print("Test loss: {0:.2f}, test accuracy: {1:.01%}".format(loss_test, acc_test))
+    # Load the test set
+    x_test = mnist.test.images
+    y_test = mnist.test.labels
 
-    # Plot some of the misclassified examples
-    cls_pred = sess.run(cls_prediction, feed_dict=feed_dict_test)
-    cls_true = np.argmax(mnist.test.labels, axis=1)
-    plot_example_errors(mnist.test.images, cls_true, cls_pred)
+    # Initialize the embedding variable with the shape of our desired tensor
+    tensor_shape = (x_test.shape[0], fc1.get_shape()[1].value)  # [test_set , h1] = [10000 , 200]
+    embedding_var = tf.Variable(tf.zeros(tensor_shape),
+                                name='fc1_embedding')
+    # assign the tensor that we want to visualize to the embedding variable
+    embedding_assign = embedding_var.assign(fc1)
 
+    # Create a config object to write the configuration parameters
+    config = projector.ProjectorConfig()
+
+    # Add embedding variable
+    embedding = config.embeddings.add()
+    embedding.tensor_name = embedding_var.name
+
+    # Link this tensor to its metadata file (e.g. labels) -> we will create this file later
+    embedding.metadata_path = 'metadata.tsv'
+
+    # Specify where you find the sprite. -> we will create this image later
+    embedding.sprite.image_path = 'sprite_images.png'
+    embedding.sprite.single_image_dim.extend([img_w, img_h])
+
+    # Write a projector_config.pbtxt in the logs_path.
+    # TensorBoard will read this file during startup.
+    projector.visualize_embeddings(train_writer, config)
+
+    # Run session to evaluate the tensor
+    x_test_fc1 = sess.run(embedding_assign, feed_dict={x: x_test})
+
+    # Save the tensor in model.ckpt file
+    saver = tf.train.Saver()
+    saver.save(sess, os.path.join(logs_path, "model.ckpt"), global_step)
+
+    # Reshape images from vector to matrix
+    x_test_images = np.reshape(np.array(x_test), (-1, img_w, img_h))
+    # Reshape labels from one-hot-encode to index
+    x_test_labels = np.argmax(y_test, axis=1)
+
+    write_sprite_image(os.path.join(logs_path, 'sprite_images.png'), x_test_images)
+    write_metadata(os.path.join(logs_path, 'metadata.tsv'), x_test_labels)

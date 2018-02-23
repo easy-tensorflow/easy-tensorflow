@@ -2,54 +2,44 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def plot_example_errors(images, cls_true, cls_pred):
+def write_sprite_image(filename, images):
     """
-    Function for plotting examples of images that have been mis-classified
-    :param images: array of all images, (#imgs, img_h*img_w)
-    :param cls_true: corresponding true labels, (#imgs,)
-    :param cls_pred: corresponding predicted labels, (#imgs,)
+        Create a sprite image consisting of sample images
+        :param filename: name of the file to save on disk
+        :param shape: tensor of flattened images
     """
-    # Negate the boolean array.
-    incorrect = np.logical_not(np.equal(cls_pred, cls_true))
+    num_img, img_w, img_h = images.shape
+    # Invert grayscale image
+    images = 1 - images
 
-    # Get the images from the test-set that have been
-    # incorrectly classified.
-    incorrect_images = images[incorrect]
+    # Calculate number of plot
+    n_plots = int(np.ceil(np.sqrt(num_img)))
 
-    # Get the true and predicted classes for those images.
-    cls_pred = cls_pred[incorrect]
-    cls_true = cls_true[incorrect]
+    # Make the background of sprite image
+    sprite_image = np.ones((img_h * n_plots, img_w * n_plots))
 
-    # Plot the first 9 images.
-    plot_images(images=incorrect_images[0:9],
-                cls_true=cls_true[0:9],
-                cls_pred=cls_pred[0:9])
+    for i in range(n_plots):
+        for j in range(n_plots):
+            img_idx = i * n_plots + j
+            if img_idx < images.shape[0]:
+                img = images[img_idx]
+                sprite_image[i * img_h:(i + 1) * img_h,
+                j * img_w:(j + 1) * img_w] = img
+
+    plt.imsave(filename, sprite_image, cmap='gray')
+    print('Sprite image saved in {}'.format(filename))
 
 
-def plot_images(images, cls_true, cls_pred=None):
+def write_metadata(filename, labels):
     """
-    Create figure with 3x3 sub-plots.
-    :param images: array of images to be plotted, (9, img_h*img_w)
-    :param cls_true: corresponding true labels (9,)
-    :param cls_pred: corresponding true labels (9,)
+            Create a metadata file image consisting of sample indices and labels
+            :param filename: name of the file to save on disk
+            :param shape: tensor of labels
     """
-    fig, axes = plt.subplots(3, 3)
-    fig.subplots_adjust(hspace=0.3, wspace=0.3)
-    img_h = img_w = np.sqrt(images.shape[-1]).astype(int)
-    for i, ax in enumerate(axes.flat):
-        # Plot image.
-        ax.imshow(images[i].reshape((img_h, img_w)), cmap='binary')
+    with open(filename, 'w') as f:
+        f.write("Index\tLabel\n")
+        for index, label in enumerate(labels):
+            f.write("{}\t{}\n".format(index, label))
 
-        # Show true and predicted classes.
-        if cls_pred is None:
-            title = "True: {0}".format(cls_true[i])
-        else:
-            title = "True: {0}, Pred: {1}".format(cls_true[i], cls_pred[i])
+    print('Metadata file saved in {}'.format(filename))
 
-        ax.set_title(title)
-
-        # Remove ticks from the plot.
-        ax.set_xticks([])
-        ax.set_yticks([])
-
-    plt.show()
