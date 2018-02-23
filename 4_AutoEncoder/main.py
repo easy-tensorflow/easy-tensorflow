@@ -17,7 +17,7 @@ print("- Test-set:\t\t{}".format(len(mnist.test.labels)))
 print("- Validation-set:\t{}".format(len(mnist.validation.labels)))
 
 # hyper-parameters
-logs_path = "./logs/"  # path to the folder that we want to save the logs for Tensorboard
+logs_path = "./logs/full"  # path to the folder that we want to save the logs for Tensorboard
 learning_rate = 0.001  # The optimization learning rate
 epochs = 10  # Total number of training epochs
 batch_size = 100  # Training batch size
@@ -59,6 +59,12 @@ with tf.variable_scope('Train'):
 
 # Initializing the variables
 init = tf.global_variables_initializer()
+
+# Add 5 images from original, noisy and reconstructed samples to summaries
+tf.summary.image('original', tf.reshape(x_original, (-1, img_w, img_h, 1)), max_outputs=5)
+tf.summary.image('noisy', tf.reshape(x_noisy, (-1, img_w, img_h, 1)), max_outputs=5)
+tf.summary.image('reconstructed', tf.reshape(out, (-1, img_w, img_h, 1)), max_outputs=5)
+
 merged = tf.summary.merge_all()
 
 # Launch the graph (session)
@@ -121,4 +127,15 @@ with tf.Session() as sess:
 
 
 
+# Load the test set
+x_test = mnist.test.images
+y_test = mnist.test.labels
+
+
+# Initialize the embedding variable with the shape of our desired tensor
+tensor_shape = (x_test.shape[0] , fc1.get_shape()[1].value) # [test_set , h1] = [10000 , 200]
+embedding_var = tf.Variable(tf.zeros(tensor_shape),
+                            name='fc1_embedding')
+# assign the tensor that we want to visualize to the embedding variable
+embedding_assign = embedding_var.assign(fc1)
 
