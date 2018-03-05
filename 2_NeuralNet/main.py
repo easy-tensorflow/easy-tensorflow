@@ -13,26 +13,21 @@ print("- Training-set:\t\t{}".format(len(mnist.train.labels)))
 print("- Test-set:\t\t{}".format(len(mnist.test.labels)))
 print("- Validation-set:\t{}".format(len(mnist.validation.labels)))
 
+# Data Dimensions
+img_h = img_w = 28              # MNIST images are 28x28
+img_size_flat = img_h * img_w   # 28x28=784, the total number of pixels
+n_classes = 10                  # Number of classes, one class per digit
+
 # hyper-parameters
-learning_rate = 0.001  # The optimization learning rate
-epochs = 10  # Total number of training epochs
-batch_size = 100  # Training batch size
-display_freq = 100  # Frequency of displaying the training results
+learning_rate = 0.001   # The optimization learning rate
+epochs = 10             # Total number of training epochs
+batch_size = 100        # Training batch size
+display_freq = 100      # Frequency of displaying the training results
 
-# Network Parameters
-# We know that MNIST images are 28 pixels in each dimension.
-img_h = img_w = 28
+# Network Configuration
+h1 = 200                # Number of units in the first hidden layer
 
-# Images are stored in one-dimensional arrays of this length.
-img_size_flat = img_h * img_w
-
-# Number of classes, one class for each of 10 digits.
-n_classes = 10
-
-# number of units in the first hidden layer
-h1 = 200
-
-# Create graph
+# Create the network graph
 # Placeholders for inputs (x), outputs(y)
 x = tf.placeholder(tf.float32, shape=[None, img_size_flat], name='X')
 y = tf.placeholder(tf.float32, shape=[None, n_classes], name='Y')
