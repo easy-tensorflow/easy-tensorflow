@@ -4,17 +4,23 @@ import scipy
 from tensorflow.examples.tutorials.mnist import input_data
 import matplotlib.pyplot as plt
 
-def load_data(image_size, num_classes, num_channels, mode='train'):
+
+def load_data(mode='train'):
+    """
+    Function to (download and) load the MNIST data
+    :param mode: train or test
+    :return: images and the corresponding labels
+    """
     mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
     if mode == 'train':
         x_train, y_train, x_valid, y_valid = mnist.train.images, mnist.train.labels, \
                                              mnist.validation.images, mnist.validation.labels
-        x_train, _ = reformat(x_train, y_train, image_size, num_channels, num_classes)
-        x_valid, _ = reformat(x_valid, y_valid, image_size, num_channels, num_classes)
+        x_train, _ = reformat(x_train, y_train)
+        x_valid, _ = reformat(x_valid, y_valid)
         return x_train, y_train, x_valid, y_valid
     elif mode == 'test':
         x_test, y_test = mnist.test.images, mnist.test.labels
-        x_test, _ = reformat(x_test, y_test, image_size, num_channels, num_classes)
+        x_test, _ = reformat(x_test, y_test)
     return x_test, y_test
 
 
@@ -26,10 +32,15 @@ def randomize(x, y):
     return shuffled_x, shuffled_y
 
 
-def reformat(x, y, img_size, num_ch, num_class):
-    """ Reformats the data to the format acceptable for the conv layers"""
-    dataset = x.reshape(
-        (-1, img_size, img_size, num_ch)).astype(np.float32)
+def reformat(x, y):
+    """
+    Reformats the data to the format acceptable for convolutional layers
+    :param x: input array
+    :param y: corresponding labels
+    :return: reshaped input and labels
+    """
+    img_size, num_ch, num_class = int(np.sqrt(x.shape[-1])), 1, len(np.unique(np.argmax(y, 1)))
+    dataset = x.reshape((-1, img_size, img_size, num_ch)).astype(np.float32)
     labels = (np.arange(num_class) == y[:, None]).astype(np.float32)
     return dataset, labels
 

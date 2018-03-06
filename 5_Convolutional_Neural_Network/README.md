@@ -10,6 +10,12 @@ above 99% on MNIST data.
 ![CNN](imgs/img1.png)
 *Fig1. CNN structure used for digit recognition*
 
+## Note
+For the step-by-step explanation of the code, checkout the 
+[CNN.ipynb](CNN.ipynb).
+
+You may also clone the whole repo. and open the main.py file which includes extensive inline comments.
+
 
 ## Dependencies
 - Python (2.7 preferably; also works fine with python 3)
@@ -20,4 +26,3 @@ above 99% on MNIST data.
 
 ## References:
 * [www.tensorflow.com](www.tensorflow.com)
-* [Visualizing a Trained Autoencoder](http://ufldl.stanford.edu/wiki/index.php/Visualizing_a_Trained_Autoencoder)
