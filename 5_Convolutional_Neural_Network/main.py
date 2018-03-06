@@ -10,10 +10,7 @@ n_classes = 10  # Number of classes, one class per digit
 n_channels = 1
 
 # Load MNIST data
-x_train, y_train, x_valid, y_valid = load_data(image_size=img_w,
-                                               num_classes=n_classes,
-                                               num_channels=n_channels,
-                                               mode='train')
+x_train, y_train, x_valid, y_valid = load_data(mode='train')
 print("Size of:")
 print("- Training-set:\t\t{}".format(len(y_train)))
 print("- Validation-set:\t{}".format(len(y_valid)))
@@ -50,7 +47,7 @@ conv2 = conv_layer(pool1, filter_size2, num_filters2, stride2, name='conv2')
 pool2 = max_pool(conv2, ksize=2, stride=2, name='pool2')
 layer_flat = flatten_layer(pool2)
 fc1 = fc_layer(layer_flat, h1, 'FC1', use_relu=True)
-output_logits = fc_layer(fc1, n_classes, 'FC2', use_relu=False)
+output_logits = fc_layer(fc1, n_classes, 'OUT', use_relu=False)
 
 # Define the loss function, optimizer, and accuracy
 with tf.variable_scope('Train'):
@@ -112,10 +109,7 @@ with tf.Session() as sess:
         print('---------------------------------------------------------')
 
     # Test the network when training is done
-    x_test, y_test = load_data(image_size=img_w,
-                               num_classes=n_classes,
-                               num_channels=n_channels,
-                               mode='test')
+    x_test, y_test = load_data(mode='test')
     feed_dict_test = {x: x_test, y: y_test}
     loss_test, acc_test = sess.run([loss, accuracy], feed_dict=feed_dict_test)
     print('---------------------------------------------------------')
