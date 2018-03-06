@@ -56,11 +56,13 @@ with tf.variable_scope('Train'):
         correct_prediction = tf.equal(tf.argmax(output_logits, 1), tf.argmax(y, 1), name='correct_pred')
         accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32), name='accuracy')
         tf.summary.scalar('accuracy', accuracy)
+    with tf.variable_scope('Prediction'):
         # Network predictions
         cls_prediction = tf.argmax(output_logits, axis=1, name='predictions')
 
-# Initializing the variables
+# Initialize the variables
 init = tf.global_variables_initializer()
+# Merge all summaries
 merged = tf.summary.merge_all()
 
 # Launch the graph (session)

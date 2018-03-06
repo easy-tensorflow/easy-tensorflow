@@ -18,8 +18,8 @@ img_h = img_w = 28              # MNIST images are 28x28
 img_size_flat = img_h * img_w   # 28x28=784, the total number of pixels
 n_classes = 10                  # Number of classes, one class per digit
 
-# hyper-parameters
-learning_rate = 0.001   # The optimization learning rate
+# Hyper-parameters
+learning_rate = 0.001   # The optimization initial learning rate
 epochs = 10             # Total number of training epochs
 batch_size = 100        # Training batch size
 display_freq = 100      # Frequency of displaying the training results
@@ -35,6 +35,7 @@ fc1 = fc_layer(x, h1, 'FC1', use_relu=True)
 output_logits = fc_layer(fc1, n_classes, 'OUT', use_relu=False)
 
 # Define the loss function, optimizer, and accuracy
+
 loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y, logits=output_logits), name='loss')
 optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate, name='Adam-op').minimize(loss)
 correct_prediction = tf.equal(tf.argmax(output_logits, 1), tf.argmax(y, 1), name='correct_pred')
