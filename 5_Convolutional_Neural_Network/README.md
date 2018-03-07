@@ -22,13 +22,6 @@ in you IDE of preference (e.g. PyCharm).
 Convolutional Neural Networks for Visual Recognition
 [Notes](https://cs231n.github.io/convolutional-networks/) and
 [video](https://www.youtube.com/watch?v=bNb2fEVKeEo&list=PL3FW7Lu3i5JvHM8ljYj-zLfQRF3EO8sYv).
-    
-## Dependencies
-- Python (2.7 preferably; also works fine with python 3)
-- NumPy
-- [Tensorflow](https://github.com/tensorflow/tensorflow)>=1.1
-- Matplotlib (for plotting images)
-
 
 ## References:
 * [www.tensorflow.com](www.tensorflow.com)

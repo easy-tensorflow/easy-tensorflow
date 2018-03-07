@@ -16,6 +16,7 @@ print("- Training-set:\t\t{}".format(len(y_train)))
 print("- Validation-set:\t{}".format(len(y_valid)))
 
 # Hyper-parameters
+logs_path = "./logs"  # path to the folder that we want to save the logs for Tensorboard
 lr = 0.001  # The optimization initial learning rate
 epochs = 10  # Total number of training epochs
 batch_size = 100  # Training batch size
@@ -73,8 +74,7 @@ merged = tf.summary.merge_all()
 with tf.Session() as sess:
     sess.run(init)
     global_step = 0
-    train_writer = tf.summary.FileWriter('./log_dir/train/', sess.graph)
-    valid_writer = tf.summary.FileWriter('./log_dir/valid/')
+    summary_writer = tf.summary.FileWriter(logs_path, sess.graph)
     # Number of training iterations in each epoch
     num_tr_iter = int(len(y_train) / batch_size)
     for epoch in range(epochs):
@@ -94,7 +94,7 @@ with tf.Session() as sess:
                 # Calculate and display the batch loss and accuracy
                 loss_batch, acc_batch, summary_tr = sess.run([loss, accuracy, merged],
                                                              feed_dict=feed_dict_batch)
-                train_writer.add_summary(summary_tr, global_step)
+                summary_writer.add_summary(summary_tr, global_step)
 
                 print("iter {0:3d}:\t Loss={1:.2f},\tTraining Accuracy={2:.01%}".
                       format(iteration, loss_batch, acc_batch))
@@ -102,7 +102,7 @@ with tf.Session() as sess:
         # Run validation after every epoch
         feed_dict_valid = {x: x_valid, y: y_valid}
         loss_valid, acc_valid, summary_val = sess.run([loss, accuracy, merged], feed_dict=feed_dict_valid)
-        valid_writer.add_summary(summary_val, global_step)
+        summary_writer.add_summary(summary_val, global_step)
         print('---------------------------------------------------------')
         print("Epoch: {0}, validation loss: {1:.2f}, validation accuracy: {2:.01%}".
               format(epoch + 1, loss_valid, acc_valid))

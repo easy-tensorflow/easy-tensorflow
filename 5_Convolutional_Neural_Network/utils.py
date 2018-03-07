@@ -59,10 +59,9 @@ def plot_images(images, cls_true, cls_pred=None, title=None):
     """
     fig, axes = plt.subplots(3, 3, figsize=(9, 9))
     fig.subplots_adjust(hspace=0.3, wspace=0.3)
-    img_h = img_w = np.sqrt(images.shape[-1]).astype(int)
     for i, ax in enumerate(axes.flat):
         # Plot image.
-        ax.imshow(images[i].reshape((img_h, img_w)), cmap='binary')
+        ax.imshow(np.squeeze(images[i]), cmap='binary')
 
         # Show true and predicted classes.
         if cls_pred is None:
