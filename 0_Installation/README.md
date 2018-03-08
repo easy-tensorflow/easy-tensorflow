@@ -121,7 +121,7 @@ To install the Anaconda follow these steps:
 
 4. Follow the instructions on installation in [here](https://docs.anaconda.com/anaconda/install/).
 
-    __*Note:__ remember the path that you are installing the Anaconda into. You will later need it for setting the path in PyCharm (we'll dive into it soon).
+    __*Note:__ Remember the path that you are installing the Anaconda into. You will later need it for setting the path in PyCharm (we'll dive into it soon).
 
     __(For Windows):__ Make sure to select "Add Anaconda to my PATH environment variable".
 
@@ -181,12 +181,16 @@ pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorfl
 ## 4. Pycharm:
 Now that the TensorFlow is installed in your machine. You can start coding. You can write your codes in any editor (terminal, emacs, notepad, ...). We suggest using __Pycharm__ because it offers a powerful debugging tool which is very useful especially when you write codes in TensorFlow. The community version of this software is free and you can download it through https://www.jetbrains.com/pycharm/download/.
 
-After you download and install the PyCharm, there is one last thing that you need to do. You have to show the PyCharm that where is the location of the python file that you have installed your ```tensorflow``` environment. You can do so through the interpreter section. When you have an existing project opened (if not, create a new project), go to the preferences. In project section, select the project interpreter and specify the path to the environment.
+After you download and install the PyCharm, there is one last thing that you need to do. You have to show the PyCharm that where is the location of the python file that you have installed your ```tensorflow``` environment. You can do so through the interpreter section. When you have an existing project opened (if not, create a new project), go to the setting. In project section, select the project interpreter and all local virtual environment.
 
 ![Alt text](files/pycharm_interpretor.png)
 
+Select Conda Environment and give the path to the python executable of existing environment to the interpreter.
 
 ![Alt text](files/pycharm_conda_env.png)
+
+__*Note:__ Recall the path that you installed the Anaconda into (section 4) and find the created environment in the _envs_ folder in the Anaconda path.
+
 Now you are all set. Write a short program like the following and run it to check everything is working fine:
 ```python
 import tensorflow as tf
@@ -194,7 +198,7 @@ a = tf.constant(2)
 with tf.Session() as sess:
    print(sess.run(a))
 ```
-```
+```python
 2
 ```
 It must print out the value of a, 2.
