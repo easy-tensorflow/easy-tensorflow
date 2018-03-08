@@ -1,22 +1,22 @@
 
 # Introduction
-The aim of this tutorial is to explain how to install __Tensorflow__ library "step by step" and on different operating systems. Tensorflow is a python library. Similar to many others, we tried installing many side packages and libraries and experienced lots of problems and errors. We finally came up with a general solution and recommend installing the following libraries and packages as the __best way__ around it:
+The aim of this tutorial is to explain how to install __TensorFlow__ library "step by step" and on different operating systems. TensorFlow is a python library. Similar to many others, we tried installing many side packages and libraries and experienced lots of problems and errors. We finally came up with a general solution and recommend installing the following libraries and packages as the __best way__ around it:
 
-##### * (optional) __CUDA-toolkit__ & __cuDNN__ library (to use GPU version of Tensorflow)
+##### * (optional) __CUDA-toolkit__ & __cuDNN__ library (to use GPU version of TensorFlow)
 
 ##### 1. Python programing language (to run your code)
 
 ##### 2. Anaconda package manager (to create environments for managing the proper version of python and libraries)
 
-##### 3. Tensorflow library (guess why?)
+##### 3. TensorFlow library (guess why?)
 
 ##### 4. Integrated Development Environment or IDE in short (to write, test and debug your code in an easier way)
 While installing some of these are not mandatory (like Anaconda), having them installed makes your life easier in the long run. The detailed explanations and instructions are provided in this tutorial where we install:
 
-##### * (For GPU version) CUDA 9 & cuDNN 7 (since it is compatible with Tensorflow 1.5)
+##### * (For GPU version) CUDA 9.0 & cuDNN 7 (since it is compatible with TensorFlow 1.6)
 ##### 1. Python 3.5 via Anaconda
 ##### 2. Anaconda distribution
-##### 3. Tensorflow 1.5
+##### 3. TensorFlow 1.6
 ##### 4. PyCharm
 
 
@@ -24,7 +24,7 @@ While installing some of these are not mandatory (like Anaconda), having them in
 ## (Only for GPU version) CUDA & cuDNN:
 You only need to read this section, if you have a GPU on your system. Otherwise, ignore it and jump to the next section.
 
-If you want to use the __GPU version__ of the __Tensorflow__ you must have a __cuda-enabled GPU__.
+If you want to use the __GPU version__ of the __TensorFlow__ you must have a __cuda-enabled GPU__.
 
 * To check if your GPU is CUDA-enabled, try to find its name in the long [list of CUDA-enabled GPUs](https://developer.nvidia.com/cuda-gpus).
 * To verify you have a CUDA-capable GPU:
@@ -45,18 +45,32 @@ __(for Windows):__ Choose the correct version of your windows and select local i
 
 Install the toolkit from downloaded .exe file.
 
-__(for Linux):__ Choose the correct version of your Linux and select deb local installer:
+__(for Linux):__ Choose the correct version of your Linux and select runfile (local) local installer:
 ![Alt text](files/cuda_linux.png)
 
 Open terminal and type:
 ```bash
-sudo apt-get install synaptic
-synaptic <package_name>.deb
+chmod +x cuda_9.0.176_384.81_linux.run
+suda ./cuda_9.0.176_384.81_linux.run --override
 ```
- __*Note:__ install on default path because you have to add the path as a variable:
+ __*Note:__ Do not install the Graphics Driver.
+
+ You can verify the installation:
 ```bash
-Export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+nvidia-smi
 ```
+Also you can check where your cuda installation path (we will call it as ```cuda_path```) is using one of the commands:
+```bash
+which nvcc
+ldconfig -p | grep cuda
+```
+
+Your ```cuda_path``` will be ```/usr/...``` or ```/usr/local/cuda/``` or ```/usr/local/cuda/cuda-9.0/```. Locate it and add it to your _.bashrc_ file:
+```bash
+export CUDA_ROOT=<cuda_path>/bin/
+export LD_LIBRARY_PATH=<cuda_path>/lib64/
+```
+
 __2.__ Download the cuDNN v7.0.5 (CUDA for Deep Neural Networks) library from [here](https://developer.nvidia.com/cudnn).
 It will ask for setting up an account … (it is free)
 Download cuDNN v7.0.5 for CUDA 9.0
@@ -65,9 +79,15 @@ __(for Windows):__ Choose the correct version of your Windows. Download the file
 
 ![Alt text](files/cuda_copy_win.png)
 
-__(for Linux):__ Choose the correct version of your Linux. Download the file. Go to the folder that you downloaded the file and open terminal and type:
+__(for Linux):__ Choose _cuDNN v7.0.5 Library for Linux_. Go to the folder that you downloaded the file and open terminal:
+```bash
+tar -xvzf cudnn-9.0-linux-x64-v7.tgz
+cd cuda/
+sudo cp -P include/cudnn.h <cuda_path>/include
+sudo cp -P lib64/libcudnn* <cuda_path>/lib64
+sudo chmod a+r <cuda_path>/lib64/libcudnn*
+```
 
-synaptic  <library_name>.deb
 Install libcupti-dev:
 ```bash
 sudo apt-get install libcupti-dev
@@ -75,14 +95,14 @@ sudo apt-get install libcupti-dev
 
 
 ## 1. Python programming language:
-In order to run __Python__ codes, you need to install Python. Python comes pre-installed with most Linux and Mac distributions. However, here we will install the python via __Anaconda__ distribution because it gives the flexibility to create __multiple environments__ for different versions of python and libraries. __Tensorflow currently runs only with python 3.5 on windows__. We will use Python 3.5 for all operating systems (Windows, Linux, and Mac) to keep it uniform among OSs throughout the tutorial.
+In order to run __Python__ codes, you need to install Python. Python comes pre-installed with most Linux and Mac distributions. However, here we will install the python via __Anaconda__ distribution because it gives the flexibility to create __multiple environments__ for different versions of python and libraries. __TensorFlow currently runs only with python 3.5 on windows__. We will use Python 3.5 for all operating systems (Windows, Linux, and Mac) to keep it uniform among OSs throughout the tutorial.
 
 In case you are interested, [this](https://www.youtube.com/watch?v=oVp1vrfL_w4&feature=youtu.be) video explains why python 3. It also clearly explains the differences between Python 2 and 3.
 
 
 
 ## 2. Anaconda:
-Anaconda gives you the ability to __create multiple environments__ with different versions of Python and other libraries. This becomes useful when some codes are written with specific versions of a library. For example, you define your default Tensorflow environment with python 3.5 and Tensorflow 1.5. However, you may find another code that runs in python2.7 and has some functions that work with Tensorflow 1.2. You can easily create a new environment and don’t mess with your default environment. The figure below might give you some hints:
+Anaconda gives you the ability to __create multiple environments__ with different versions of Python and other libraries. This becomes useful when some codes are written with specific versions of a library. For example, you define your default TensorFlow environment with python 3.5 and TensorFlow 1.6  with GPU by the name ```tensorflow```. However, you may find another code that runs in python2.7 and has some functions that work with TensorFlow 1.2 with CPU. You can easily create a new environment and name it for example ```tf-12-cpu-py27```. In this way you don’t mess with your default environment and you can create multiple environments for multiple configurations. The figure below might give you some hints:
 
 ![Alt text](files/multi_env.png)
 
@@ -111,8 +131,8 @@ To install the Anaconda follow these steps:
 
 __*Note:__ If you wanna learn more about Anaconda, watch [this](https://www.youtube.com/watch?v=YJC6ldI3hWk) amazing video which explains it thoroughly.
 
-## 3. Tensorflow:
-Now, having installed all the prerequisites, you can start installing the __Tensorflow__ library. To install the library we will create an environment in Anaconda with __python 3.5__ we name it __tensorflow__. However, you may choose your own desired name for it. Open command prompt (or terminal) and type:
+## 3. TensorFlow:
+Now, having installed all the prerequisites, you can start installing the __TensorFlow__ library. To install the library we will create an environment in Anaconda with __python 3.5__ we name it __tensorflow__. However, you may choose your own desired name for it. Open command prompt (or terminal) and type:
 ```bash
 conda create --name tensorflow python=3.5
 ```
@@ -130,7 +150,7 @@ At this step, the name of the environment will appear at the beginning of the li
 ```bash
 (tensorflow) >>
 ```
-Now you can go ahead and install the Tensorflow:
+Now you can go ahead and install the TensorFlow:
 
 __(for Windows):__
 
@@ -146,25 +166,27 @@ __(for Linux):__
 
 *(CPU version):*
 ```bash
-pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.5.0-cp35-cp35m-linux_x86_64.whl
+pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.6.0-cp35-cp35m-linux_x86_64.whl
 ```
 *(GPU version):*
 ```bash
-pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.5.0-cp35-cp35m-linux_x86_64.whl
+pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-1.6.0-cp35-cp35m-linux_x86_64.whl
  ```
 __(for Mac):__
 
 *(CPU version):*
 ```bash
-pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.5.0-py3-none-any.whl
+pip install --ignore-installed --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-1.6.0-py3-none-any.whl
 ```
 ## 4. Pycharm:
-Now that the Tensorflow is installed in your machine. You can start coding. You can write your codes in any editor (terminal, emacs, notepad, ...). We suggest using __Pycharm__ because it offers a powerful debugging tool which is very useful especially when you write codes in Tensorflow. The community version of this software is free and you can download it through https://www.jetbrains.com/pycharm/download/.
+Now that the TensorFlow is installed in your machine. You can start coding. You can write your codes in any editor (terminal, emacs, notepad, ...). We suggest using __Pycharm__ because it offers a powerful debugging tool which is very useful especially when you write codes in TensorFlow. The community version of this software is free and you can download it through https://www.jetbrains.com/pycharm/download/.
 
-After you download and install the PyCharm, there is one last thing that you need to do. You have to show the PyCharm that where is the location of the python file that you have installed your tensorflow environment. You can do so through the interpreter section. When you have an existing project opened (if not, create a new project), go to the preferences. In project section, select the project interpreter and specify the path to the environment.
+After you download and install the PyCharm, there is one last thing that you need to do. You have to show the PyCharm that where is the location of the python file that you have installed your ```tensorflow``` environment. You can do so through the interpreter section. When you have an existing project opened (if not, create a new project), go to the preferences. In project section, select the project interpreter and specify the path to the environment.
 
-![Alt text](files/pycharm.png)
+![Alt text](files/pycharm_interpretor.png)
 
+
+![Alt text](files/pycharm_conda_env.png)
 Now you are all set. Write a short program like the following and run it to check everything is working fine:
 ```python
 import tensorflow as tf
