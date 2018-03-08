@@ -59,13 +59,13 @@ suda ./cuda_9.0.176_384.81_linux.run --override
 ```bash
 nvidia-smi
 ```
-Also you can check where your cuda installation path (we will call it as ```cuda_path```) is using one of the commands:
+Also you can check where your cuda installation path (we will call it as ```<cuda_path>```) is using one of the commands:
 ```bash
 which nvcc
 ldconfig -p | grep cuda
 ```
 
-Your ```cuda_path``` will be ```/usr/...``` or ```/usr/local/cuda/``` or ```/usr/local/cuda/cuda-9.0/```. Locate it and add it to your _.bashrc_ file:
+Your ```<cuda_path>``` will be ```/usr/...``` or ```/usr/local/cuda/``` or ```/usr/local/cuda/cuda-9.0/```. Locate it and add it to your _.bashrc_ file:
 ```bash
 export CUDA_ROOT=<cuda_path>/bin/
 export LD_LIBRARY_PATH=<cuda_path>/lib64/
