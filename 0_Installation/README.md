@@ -203,5 +203,20 @@ with tf.Session() as sess:
 ```
 It must print out the value of a, 2.
 
+We suggest you to install some useful packages throughout these tutorials. In your terminal, activate the ```tensorflow``` environment and install the following packages:
+
+__(for Windows):__
+```bash
+activate tensorflow
+pip install matplotlib jupyter
+```
+
+__(for Linux & Mac):__
+```bash
+source activate tensorflow
+pip install matplotlib jupyter
+```
+
+
 
 Thanks for reading! If you have any question or doubt, feel free to leave a comment in our [website](http://easy-tensorflow.com/).
