@@ -51,7 +51,7 @@ __(for Linux):__ Choose the correct version of your Linux and select runfile (lo
 Open terminal and type:
 ```bash
 chmod +x cuda_9.0.176_384.81_linux.run
-suda ./cuda_9.0.176_384.81_linux.run --override
+sudo ./cuda_9.0.176_384.81_linux.run --override
 ```
  __*Note:__ Do not install the Graphics Driver.
 
