@@ -15,18 +15,16 @@ def load_data(mode='train'):
     if mode == 'train':
         x_train, y_train, x_valid, y_valid = mnist.train.images, mnist.train.labels, \
                                              mnist.validation.images, mnist.validation.labels
-        x_train, _ = reformat(x_train, y_train)
-        x_valid, _ = reformat(x_valid, y_valid)
         return x_train, y_train, x_valid, y_valid
     elif mode == 'test':
         x_test, y_test = mnist.test.images, mnist.test.labels
-        x_test, _ = reformat(x_test, y_test)
     return x_test, y_test
+
 
 def randomize(x, y):
     """ Randomizes the order of data samples and their corresponding labels"""
     permutation = np.random.permutation(y.shape[0])
-    shuffled_x = x[permutation, :, :, :]
+    shuffled_x = x[permutation, :]
     shuffled_y = y[permutation]
     return shuffled_x, shuffled_y
 

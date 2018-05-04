@@ -10,15 +10,15 @@ print("- Training-set:\t\t{}".format(len(y_train)))
 print("- Validation-set:\t{}".format(len(y_valid)))
 
 # Data Dimensions
-img_h = img_w = 28              # MNIST images are 28x28
-img_size_flat = img_h * img_w   # 28x28=784, the total number of pixels
-n_classes = 10                  # Number of classes, one class per digit
+img_h = img_w = 28  # MNIST images are 28x28
+img_size_flat = img_h * img_w  # 28x28=784, the total number of pixels
+n_classes = 10  # Number of classes, one class per digit
 
 # Hyper-parameters
-learning_rate = 0.001   # The optimization initial learning rate
-epochs = 10             # Total number of training epochs
-batch_size = 100        # Training batch size
-display_freq = 100      # Frequency of displaying the training results
+learning_rate = 0.001  # The optimization initial learning rate
+epochs = 10  # Total number of training epochs
+batch_size = 100  # Training batch size
+display_freq = 100  # Frequency of displaying the training results
 
 # Create the graph for the linear model
 # Placeholders for inputs (x), outputs(y)
@@ -67,20 +67,16 @@ with tf.Session() as sess:
 
             if iteration % display_freq == 0:
                 # Calculate and display the batch loss and accuracy
-                loss_batch, acc_batch, summary_tr = sess.run([loss, accuracy],
-                                                             feed_dict=feed_dict_batch)
+                loss_batch, acc_batch = sess.run([loss, accuracy],
+                                                 feed_dict=feed_dict_batch)
 
                 print("iter {0:3d}:\t Loss={1:.2f},\tTraining Accuracy={2:.01%}".
                       format(iteration, loss_batch, acc_batch))
 
         # Run validation after every epoch
-        feed_dict_valid = {x: x_valid, y: y_valid}
-        loss_valid, acc_valid, summary_val = sess.run([loss, accuracy], feed_dict=feed_dict_valid)
+        feed_dict_valid = {x: x_valid[:500, :], y: y_valid[:500, :]}
+        loss_valid, acc_valid = sess.run([loss, accuracy], feed_dict=feed_dict_valid)
         print('---------------------------------------------------------')
         print("Epoch: {0}, validation loss: {1:.2f}, validation accuracy: {2:.01%}".
               format(epoch + 1, loss_valid, acc_valid))
         print('---------------------------------------------------------')
-
-
-
-
