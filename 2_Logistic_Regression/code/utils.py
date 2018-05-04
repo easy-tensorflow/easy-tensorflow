@@ -47,6 +47,7 @@ def get_next_batch(x, y, start, end):
     y_batch = y[start:end]
     return x_batch, y_batch
 
+
 def plot_images(images, cls_true, cls_pred=None, title=None):
     """
     Create figure with 3x3 sub-plots.

@@ -74,9 +74,25 @@ with tf.Session() as sess:
                       format(iteration, loss_batch, acc_batch))
 
         # Run validation after every epoch
-        feed_dict_valid = {x: x_valid[:500, :], y: y_valid[:500, :]}
+        feed_dict_valid = {x: x_valid[:1000, :], y: y_valid[:1000, :]}
         loss_valid, acc_valid = sess.run([loss, accuracy], feed_dict=feed_dict_valid)
         print('---------------------------------------------------------')
         print("Epoch: {0}, validation loss: {1:.2f}, validation accuracy: {2:.01%}".
               format(epoch + 1, loss_valid, acc_valid))
         print('---------------------------------------------------------')
+
+    # Test the network after training
+    # Accuracy
+    x_test, y_test = load_data(mode='test')
+    feed_dict_test = {x: x_test[:1000, :], y: y_test[:1000, :]}
+    loss_test, acc_test = sess.run([loss, accuracy], feed_dict=feed_dict_test)
+    print('---------------------------------------------------------')
+    print("Test loss: {0:.2f}, test accuracy: {1:.01%}".format(loss_test, acc_test))
+    print('---------------------------------------------------------')
+
+    # Plot some of the correct and misclassified examples
+    cls_pred = sess.run(cls_prediction, feed_dict=feed_dict_test)
+    cls_true = np.argmax(y_test, axis=1)
+    plot_images(x_test, cls_true, cls_pred, title='Correct Examples')
+    plot_example_errors(x_test, cls_true, cls_pred, title='Misclassified Examples')
+    plt.show()
