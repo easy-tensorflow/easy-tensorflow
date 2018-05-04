@@ -26,12 +26,10 @@ x = tf.placeholder(tf.float32, shape=[None, img_size_flat], name='X')
 y = tf.placeholder(tf.float32, shape=[None, n_classes], name='Y')
 
 # create weight matrix initialized randomely from N~(0, 0.01)
-weight_initer = tf.truncated_normal_initializer(mean=0.0, stddev=0.01)
-W = tf.get_variable(name="Weight", dtype=tf.float32, shape=[img_size_flat, n_classes], initializer=weight_initer)
+W = weight_variable(shape=[img_size_flat, n_classes])
 
-# create bias vector of size 200, all initialized as zero
-bias_initer =tf.constant(0., shape=[n_classes], dtype=tf.float32)
-b = tf.get_variable(name="Bias", dtype=tf.float32, initializer=bias_initer)
+# create bias vector initialized as zero
+b = bias_variable(shape=[n_classes])
 
 output_logits = tf.matmul(x, W) + b
 y_pred = tf.nn.softmax(output_logits)
@@ -71,7 +69,6 @@ with tf.Session() as sess:
                 # Calculate and display the batch loss and accuracy
                 loss_batch, acc_batch, summary_tr = sess.run([loss, accuracy],
                                                              feed_dict=feed_dict_batch)
-                summary_writer.add_summary(summary_tr, global_step)
 
                 print("iter {0:3d}:\t Loss={1:.2f},\tTraining Accuracy={2:.01%}".
                       format(iteration, loss_batch, acc_batch))
@@ -79,7 +76,6 @@ with tf.Session() as sess:
         # Run validation after every epoch
         feed_dict_valid = {x: x_valid, y: y_valid}
         loss_valid, acc_valid, summary_val = sess.run([loss, accuracy], feed_dict=feed_dict_valid)
-        summary_writer.add_summary(summary_val, global_step)
         print('---------------------------------------------------------')
         print("Epoch: {0}, validation loss: {1:.2f}, validation accuracy: {2:.01%}".
               format(epoch + 1, loss_valid, acc_valid))
