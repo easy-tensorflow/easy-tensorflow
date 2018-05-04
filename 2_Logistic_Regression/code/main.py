@@ -16,7 +16,7 @@ n_classes = 10  # Number of classes, one class per digit
 
 # Hyper-parameters
 learning_rate = 0.001  # The optimization initial learning rate
-epochs = 10  # Total number of training epochs
+epochs = 2  # Total number of training epochs
 batch_size = 100  # Training batch size
 display_freq = 100  # Frequency of displaying the training results
 
@@ -74,7 +74,7 @@ with tf.Session() as sess:
                       format(iteration, loss_batch, acc_batch))
 
         # Run validation after every epoch
-        feed_dict_valid = {x: x_valid[:1000, :], y: y_valid[:1000, :]}
+        feed_dict_valid = {x: x_valid[:1000], y: y_valid[:1000]}
         loss_valid, acc_valid = sess.run([loss, accuracy], feed_dict=feed_dict_valid)
         print('---------------------------------------------------------')
         print("Epoch: {0}, validation loss: {1:.2f}, validation accuracy: {2:.01%}".
@@ -84,7 +84,7 @@ with tf.Session() as sess:
     # Test the network after training
     # Accuracy
     x_test, y_test = load_data(mode='test')
-    feed_dict_test = {x: x_test[:1000, :], y: y_test[:1000, :]}
+    feed_dict_test = {x: x_test[:1000], y: y_test[:1000]}
     loss_test, acc_test = sess.run([loss, accuracy], feed_dict=feed_dict_test)
     print('---------------------------------------------------------')
     print("Test loss: {0:.2f}, test accuracy: {1:.01%}".format(loss_test, acc_test))
@@ -92,7 +92,7 @@ with tf.Session() as sess:
 
     # Plot some of the correct and misclassified examples
     cls_pred = sess.run(cls_prediction, feed_dict=feed_dict_test)
-    cls_true = np.argmax(y_test, axis=1)
+    cls_true = np.argmax(y_test[:1000], axis=1)
     plot_images(x_test, cls_true, cls_pred, title='Correct Examples')
-    plot_example_errors(x_test, cls_true, cls_pred, title='Misclassified Examples')
+    plot_example_errors(x_test[:1000], cls_true, cls_pred, title='Misclassified Examples')
     plt.show()
