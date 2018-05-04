@@ -44,7 +44,7 @@ accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32), name='accurac
 # Network predictions
 cls_prediction = tf.argmax(output_logits, axis=1, name='predictions')
 
-# Initializing the variables
+# Creating the op for initializing all variables
 init = tf.global_variables_initializer()
 
 # Launch the graph (session)

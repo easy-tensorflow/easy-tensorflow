@@ -65,7 +65,7 @@ with tf.variable_scope('Train'):
         # Network predictions
         cls_prediction = tf.argmax(output_logits, axis=1, name='predictions')
 
-# Initialize the variables
+# Creating the op for initializing all variables
 init = tf.global_variables_initializer()
 # Merge all summaries
 merged = tf.summary.merge_all()
