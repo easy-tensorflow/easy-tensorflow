@@ -101,9 +101,6 @@ The tutorials in this repository are partitioned into relevant categories.
 
 ==========================
 
-~~~~~~~~
-Warm-up
-~~~~~~~~
 
 .. .. image:: _img/mainpage/welcome.gif
    :height: 100px
