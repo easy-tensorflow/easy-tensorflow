@@ -41,7 +41,7 @@ Why use TensorFlow?
    :height: 100px
    :width: 200 px
    :scale: 50 %
-   :alt: _img/why_tensorflow.png.gif
+   :alt: https://github.com/easy-tensorflow/easy-tensorflow/blob/master/_img/why_tensorflow.png
    :align: right
 
 We can summarize the **pros** as below:
