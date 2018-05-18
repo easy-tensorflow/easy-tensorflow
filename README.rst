@@ -37,6 +37,13 @@ This repository is dedicated to suggesting a simple path to learn TensorFlow.
 Why use TensorFlow?
 ~~~~~~~~~~~~~~~~~~~~~
 
+.. image:: _img/why_tensorflow.png.gif
+   :height: 100px
+   :width: 200 px
+   :scale: 50 %
+   :alt: alternate text
+   :align: right
+
 We can summarize the **pros** as below:
 
     - It’s developed and maintained by Google. As such, a continued support and development is ensured
@@ -102,12 +109,7 @@ The tutorials in this repository are partitioned into relevant categories.
 ==========================
 
 
-.. .. image:: _img/mainpage/welcome.gif
-   :height: 100px
-   :width: 200 px
-   :scale: 50 %
-   :alt: alternate text
-   :align: right
+
 
 .. +----+---------------------+----------------------------------------------------------------------------------------+----------------------------------------------+
 .. | #  |       topic         |   Source Code                                                                          |                                              |
