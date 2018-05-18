@@ -37,7 +37,7 @@ This repository is dedicated to suggesting a simple path to learn TensorFlow.
 Why use TensorFlow?
 ~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: _img/why_tensorflow.png.gif
+.. image:: _img/why_tensorflow.png
    :height: 100px
    :width: 200 px
    :scale: 50 %
