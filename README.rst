@@ -78,13 +78,12 @@ as simple as possible.
 TensorFlow Installation and Setup the Environment
 =================================================
 
-.. .. image:: _img/mainpage/installation-logo.gif
+.. image:: _img/tensorflow.png
    :height: 100px
    :width: 200 px
    :scale: 50 %
-   :alt: alternate text
+   :target: https://github.com/easy-tensorflow/easy-tensorflow/blob/master/_img/tensorflow.png
    :align: right
-   :target: https://github.com/astorfi/TensorFlow-World/tree/master/docs/tutorials/installation
 
 
 
