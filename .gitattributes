@@ -1,2 +1,6 @@
-2_Logistic_Regression/code/* linguist-documentation
+3_Feed_Forward_Neural_Network/* linguist-documentation
+4_Tensorboard/* linguist-documentation
+5_AutoEncoder/* linguist-documentation
+6_Convolutional_Neural_Network/* linguist-documentation
+
 _img/* linguist-vendored
