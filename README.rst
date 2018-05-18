@@ -78,14 +78,6 @@ as simple as possible.
 TensorFlow Installation and Setup the Environment
 =================================================
 
-.. image:: _img/tensorflow.png
-   :height: 100px
-   :width: 200 px
-   :scale: 50 %
-   :target: https://github.com/easy-tensorflow/easy-tensorflow/blob/master/_img/tensorflow.png
-   :align: right
-
-
 
 The aim here is to explain how to install TensorFlow library "step by step" and on
 different operating systems. TensorFlow is a python library. Similar to many others, we tried
@@ -103,12 +95,17 @@ In order to install TensorFlow please refer to the following link:
 TensorFlow Tutorials
 ====================
 
+.. image:: _img/tensorflow.png
+   :height: 100px
+   :width: 200 px
+   :scale: 50 %
+   :target: https://github.com/easy-tensorflow/easy-tensorflow/blob/master/_img/tensorflow.png
+   :align: right
+
+
 The tutorials in this repository are partitioned into relevant categories.
 
 ==========================
-
-
-
 
 .. +----+---------------------+----------------------------------------------------------------------------------------+----------------------------------------------+
 .. | #  |       topic         |   Source Code                                                                          |                                              |
