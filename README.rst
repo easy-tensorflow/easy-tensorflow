@@ -5,8 +5,6 @@
 
 .. image:: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat
     :target: https://github.com/easy-tensorflow/easy-tensorflow/pulls
-.. image:: https://badges.frapsoft.com/os/v2/open-source.svg?v=102
-    :target: https://github.com/ellerbrock/open-source-badge/
 .. image:: https://img.shields.io/website-up-down-green-red/http/shields.io.svg
      :target: http://shields.io/
 .. image:: https://img.shields.io/badge/Made%20with-Python-1f425f.svg
