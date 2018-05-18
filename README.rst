@@ -57,8 +57,7 @@ We can summarize the **pros** as below:
     - Is about more than deep learning. TensorFlow actually has tools to support reinforcement learning and other algorithms.
 
 In addition to the aforementioned points, the large community of TensorFlow enrich the developers with the answer to almost all the
-questions one may encounter. Furthermore, since most of the developers are using TensorFlow for code development, having a hands-on
- on TensorFlow is a necessity these days.
+questions one may encounter. Furthermore, since most of the developers are using TensorFlow for code development, having a hands-on on TensorFlow is a necessity these days.
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Why this repository?
