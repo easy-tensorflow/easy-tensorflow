@@ -6,7 +6,7 @@ Easy-TensorFlow
 .. image:: https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat
     :target: https://github.com/easy-tensorflow/easy-tensorflow/pulls
 .. image:: https://img.shields.io/website-up-down-green-red/http/shields.io.svg
-     :target: http://shields.io/
+     :target: http://www.easy-tensorflow.com/
 .. image:: https://img.shields.io/badge/Made%20with-Python-1f425f.svg
       :target: https://www.python.org/
 .. image:: https://img.shields.io/pypi/l/ansicolortags.svg
