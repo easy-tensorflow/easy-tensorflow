@@ -1,4 +1,4 @@
-![](Tutorials/files/title.png)
+![](Tutorials/files/title_basics.png)
 
 In this set of tutorials, we take the first steps toward understanding what are the basic components of TensorFlow and how they work. We assume you have the TensorFlow library and Python environment ready. If not, feel free to do so using our detailed guideline to [install TensorFlow](https://github.com/easy-tensorflow/easy-tensorflow/blob/master/0_Install_TensorFlow/README.md).
 
