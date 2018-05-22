@@ -1,5 +1,5 @@
 
-# Introduction
+# How to install TensorFlow
 The aim of this tutorial is to explain how to install __TensorFlow__ library "step by step" and on different operating systems. TensorFlow is a python library. Similar to many others, we tried installing many side packages and libraries and experienced lots of problems and errors. We finally came up with a general solution and recommend installing the following libraries and packages as the __best way__ around it:
 
 ##### * (optional) __CUDA-toolkit__ & __cuDNN__ library (to use GPU version of TensorFlow)
