@@ -1,5 +1,6 @@
 # TensorFlow Basics
 
+In this set of tutorials, we take the first steps toward understanding what are the basic components of TensorFlow and how od they work. We assume you have the TensorFlow library and Python environment ready. If not, feel free to do so using our detailed guideline to [install TensorFlow](https://github.com/easy-tensorflow/easy-tensorflow/blob/master/0_Install_TensorFlow/README.md).
 
 ## Tutorials:
 * [1. Graph and Session: ](https://github.com/easy-tensorflow/easy-tensorflow/blob/master/1_TensorFlow_Basics/Tutorials/1_Graph_and_Session.ipynb)
