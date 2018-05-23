@@ -16,6 +16,10 @@ Example of decision boundaries generated for separating 3 classes are illustrate
 
 <img align="center" width="100" height="100" src="https://github.com/easy-tensorflow/easy-tensorflow/blob/master/2_Linear_Classifier/files/decision_boundary.png">
 
+<p align="center">
+  <img width="400" height="400" src="https://github.com/easy-tensorflow/easy-tensorflow/blob/master/2_Linear_Classifier/files/decision_boundary.png">
+</p>
+
  ___Fig. 2-___ Decision boundries generate by a linear classifier
  
  To learn more about the Logistic Regression, read [this](https://cs231n.github.io/linear-classify/) article.
