@@ -4,7 +4,7 @@ In this tutorial, we'll implement a Linear Classifier (i.e. Logistic Regression)
 
 The __logistic regression__ is called as a __linear classifier__ because it produces a decision boundary which is linear in nature. So, the classification made by a logistic regression is linear only.
 Figure below shows the structure of the classifier implemented for classifying the 28x28 MNIST data (i.e. images of hand-written digits).
-![linear classifier](files/linear_classifier.png)
+![linear classifier](Tutorials/files/linear_classifier.png)
 
 ___Fig. 1-___ Sample Logistic Regression structure implemented for classifying MNIST digits
 
@@ -12,7 +12,7 @@ Example of decision boundaries generated for separating 3 classes are illustrate
 
 
 <p align="center">
-  <img width="400" height="400" src="https://github.com/easy-tensorflow/easy-tensorflow/blob/master/2_Linear_Classifier/files/decision_boundary.png">
+  <img width="400" height="400" src="https://github.com/easy-tensorflow/easy-tensorflow/blob/master/2_Linear_Classifier/Tutorials/files/decision_boundary.png">
 </p>
 
  ___Fig. 2-___ Decision boundries generate by a linear classifier
