@@ -1,6 +1,7 @@
 # Linear Classifier (Logistic Regression)
 
-In this tutorial, we'll implement a Linear Classifier (i.e. Logistic Regression) to classify the MNIST data. 
+In this tutorial, we'll implement a Linear Classifier (i.e. Logistic Regression) to classify the MNIST data. You can read our step-by-step [Tutorial](https://github.com/easy-tensorflow/easy-tensorflow/blob/master/2_Linear_Classifier/Tutorials/1_Linear_Classifier.ipynb) on writing the code for this network, or skip it and see the implementation [Code](https://github.com/easy-tensorflow/easy-tensorflow/tree/master/2_Linear_Classifier/code).
+
 
 The __logistic regression__ is called as a __linear classifier__ because it produces a decision boundary which is linear in nature. So, the classification made by a logistic regression is linear only.
 Figure below shows the structure of the classifier implemented for classifying the 28x28 MNIST data (i.e. images of hand-written digits).

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this tutorial, we'll create our first neural network classifier in Tensorflow. The implemented network architecture is presented in the following figure.
+In this tutorial, we'll create our first neural network classifier in Tensorflow. The implemented network architecture is presented in the following figure. You can read our step-by-step [Tutorial](https://github.com/easy-tensorflow/easy-tensorflow/blob/master/3_Neural_Network/Tutorials/1_Neural_Network.ipynb) on writing the code for this network, or skip it and see the implementation [Code](https://github.com/easy-tensorflow/easy-tensorflow/tree/master/3_Neural_Network/code).
 
 
 ![linear classifier](Tutorials/files/nn.png)
