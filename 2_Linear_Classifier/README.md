@@ -24,4 +24,4 @@ Example of decision boundaries generated for separating 3 classes are illustrate
  * [1. Logistic Regression](https://github.com/easy-tensorflow/easy-tensorflow/blob/master/2_Linear_Classifier/Tutorials/1_Linear_Classifier.ipynb)
     Implemented in TensorFlow 
 * [2. Logistic Regression+TensorBoard](https://github.com/easy-tensorflow/easy-tensorflow/blob/master/2_Linear_Classifier/Tutorials/2_Linear_Classifier%20_TensorBoard.ipynb)
-    Monitoring the classifier structure, learning and performance of the implemented classifier using TensorBoard
+    Visualizing the classifier structure, learning process and performance using TensorBoard
