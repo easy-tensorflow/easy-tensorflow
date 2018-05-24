@@ -114,7 +114,7 @@ The tutorials in this repository are partitioned into relevant categories.
 
 .. _Installation: https://github.com/easy-tensorflow/easy-tensorflow/tree/master/0_Install_TensorFlow
 .. _Basics: https://github.com/easy-tensorflow/easy-tensorflow/tree/master/1_TensorFlow_Basics
-.. _Logistic_Regression: https://github.com/easy-tensorflow/easy-tensorflow/tree/master/2_Logistic_Regression
+.. _Logistic_Regression: https://github.com/easy-tensorflow/easy-tensorflow/tree/master/2_Linear_Classifier
 .. _Feed_Forward_Neural_Network: https://github.com/easy-tensorflow/easy-tensorflow/tree/master/3_Neural_Network
 .. _Tensorboard: https://github.com/easy-tensorflow/easy-tensorflow/tree/master/4_Tensorboard
 .. _AutoEncoder: https://github.com/easy-tensorflow/easy-tensorflow/tree/master/5_AutoEncoder
