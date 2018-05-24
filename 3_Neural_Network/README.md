@@ -17,16 +17,19 @@ In the previous tutorial on the [Linear Classifier](https://cs231n.github.io/lin
 
  ___Fig. 2-___ Sample decision boundries generate by: (a) linear classifier, (b) neural network.
  
+ 
  To learn more about the Logistic Regression, read [this](https://cs231n.github.io/linear-classify/) and for a detailed tutorial on the basics of neural networks, see the following links:
  
  [Neural Networks Part 1: Setting up the Architecture](https://cs231n.github.io/neural-networks-1/)
+ 
  [Neural Networks Part 2: Setting up the Data and the Loss](https://cs231n.github.io/neural-networks-2/)
+ 
  [Neural Networks Part 3: Learning and Evaluation](https://cs231n.github.io/neural-networks-3/)
  
  
  ## Tutorials
  
  * [1. Neural Network](https://github.com/easy-tensorflow/easy-tensorflow/blob/master/3_Neural_Network/Tutorials/1_Neural_Network.ipynb)
-    A two layer neural network classifier for classifying MNIST data implemented in TensorFlow 
+    A two-layer neural network classifier for classifying MNIST data implemented in TensorFlow 
 * [2. Neural_Network+TensorBoard](https://github.com/easy-tensorflow/easy-tensorflow/blob/master/2_Linear_Classifier/Tutorials/2_Neural_Network_TensorBoard.ipynb)
     Visualizing the classifier structure, learning process and performance using TensorBoard
