@@ -18,6 +18,8 @@ Easy-TensorFlow
 
 The goal of this repository is to provide comprehensive tutorials for TensorFlow while maintaining the simplicity of the code.
 
+Each tutorial includes a **detailed explanation** (written in .ipynb) format, as well as the **source code** (in .py format).
+
 
 #################
 Table of Contents
