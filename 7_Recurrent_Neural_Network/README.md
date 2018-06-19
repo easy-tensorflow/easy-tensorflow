@@ -10,7 +10,10 @@ Then we'll switch to its more complicated versions, namely LSTM which helps gett
 
 
 ### This repo. is under construction
-However, you may start by reading our first tutorial [Vanilla RNN for Digit Classification](https://github.com/easy-tensorflow/easy-tensorflow/blob/master/7_Recurrent_Neural_Network/Tutorials/01_Vanilla_RNN_for_Classification.ipynb)
+However, you may start by reading the following tutorials:
+- [Vanilla RNN for Digit Classification](https://github.com/easy-tensorflow/easy-tensorflow/blob/master/7_Recurrent_Neural_Network/Tutorials/01_Vanilla_RNN_for_Classification.ipynb)
+
+- [Bidirectional RNN for Digit Classification](https://github.com/easy-tensorflow/easy-tensorflow/blob/master/7_Recurrent_Neural_Network/Tutorials/02_Bidirectional_RNN_for_Classification.ipynb)
 
 ## References:
 * [www.tensorflow.com](www.tensorflow.com)
