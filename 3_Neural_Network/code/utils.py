@@ -2,6 +2,37 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
+def load_data(mode='train'):
+    """
+    Function to (download and) load the MNIST data
+    :param mode: train or test
+    :return: images and the corresponding labels
+    """
+    from tensorflow.examples.tutorials.mnist import input_data
+    mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
+    if mode == 'train':
+        x_train, y_train, x_valid, y_valid = mnist.train.images, mnist.train.labels, \
+                                             mnist.validation.images, mnist.validation.labels
+        return x_train, y_train, x_valid, y_valid
+    elif mode == 'test':
+        x_test, y_test = mnist.test.images, mnist.test.labels
+    return x_test, y_test
+
+
+def randomize(x, y):
+    """ Randomizes the order of data samples and their corresponding labels"""
+    permutation = np.random.permutation(y.shape[0])
+    shuffled_x = x[permutation, :]
+    shuffled_y = y[permutation]
+    return shuffled_x, shuffled_y
+
+
+def get_next_batch(x, y, start, end):
+    x_batch = x[start:end]
+    y_batch = y[start:end]
+    return x_batch, y_batch
+
+
 def plot_images(images, cls_true, cls_pred=None, title=None):
     """
     Create figure with 3x3 sub-plots.
@@ -11,10 +42,9 @@ def plot_images(images, cls_true, cls_pred=None, title=None):
     """
     fig, axes = plt.subplots(3, 3, figsize=(9, 9))
     fig.subplots_adjust(hspace=0.3, wspace=0.3)
-    img_h = img_w = np.sqrt(images.shape[-1]).astype(int)
     for i, ax in enumerate(axes.flat):
         # Plot image.
-        ax.imshow(images[i].reshape((img_h, img_w)), cmap='binary')
+        ax.imshow(images[i].reshape(28, 28), cmap='binary')
 
         # Show true and predicted classes.
         if cls_pred is None:
