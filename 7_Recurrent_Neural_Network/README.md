@@ -5,6 +5,12 @@
 In this tutorial we will learn about implementing Recurrent Neural Network in TensorFlow. 
 RNN's charactristics makes it suitable for many different tasks; from simple classification to machine translation, language modelling, sentiment analysis, etc.
 
+
+![NN classifier](Tutorials/files/01.png)
+
+___Fig. 1-___ Sample RNN structure (Left) and its unfolded representation (Right)
+
+
 In this series of tutorials, we'll start with using a vanilla RNN for classifying MNIST digits. 
 Then we'll switch to its more complicated versions, namely LSTM which helps getting better performances.
 
