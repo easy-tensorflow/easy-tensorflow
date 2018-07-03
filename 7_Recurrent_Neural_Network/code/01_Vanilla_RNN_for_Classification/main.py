@@ -16,15 +16,15 @@ batch_size = 100        # Training batch size
 display_freq = 100      # Frequency of displaying the training results
 
 # Network Parameters
-num_input = 28          # MNIST data input (img shape: 28*28)
-timesteps = 28          # Timesteps
+input_dim = 28          # MNIST data input (img shape: 28*28)
+max_time = 28           # Timesteps
 num_hidden_units = 128  # Number of hidden units of the RNN
 n_classes = 10          # Number of classes, one class per digit
 
 
 # Create the graph for the linear model
 # Placeholders for inputs (x) and outputs(y)
-x = tf.placeholder(tf.float32, shape=[None, timesteps, num_input], name='X')
+x = tf.placeholder(tf.float32, shape=[None, max_time, input_dim], name='X')
 y = tf.placeholder(tf.float32, shape=[None, n_classes], name='Y')
 
 
@@ -34,7 +34,7 @@ W = weight_variable(shape=[num_hidden_units, n_classes])
 # create bias vector initialized as zero
 b = bias_variable(shape=[n_classes])
 
-output_logits = RNN(x, W, b, timesteps, num_hidden_units)
+output_logits = RNN(x, W, b, max_time, num_hidden_units)
 y_pred = tf.nn.softmax(output_logits)
 
 # Model predictions
@@ -62,7 +62,7 @@ with tf.Session() as sess:
             start = iteration * batch_size
             end = (iteration + 1) * batch_size
             x_batch, y_batch = get_next_batch(x_train, y_train, start, end)
-            x_batch = x_batch.reshape((batch_size, timesteps, num_input))
+            x_batch = x_batch.reshape((batch_size, max_time, input_dim))
             # Run optimization op (backprop)
             feed_dict_batch = {x: x_batch, y: y_batch}
             sess.run(optimizer, feed_dict=feed_dict_batch)
@@ -77,7 +77,7 @@ with tf.Session() as sess:
 
         # Run validation after every epoch
 
-        feed_dict_valid = {x: x_valid[:1000].reshape((-1, timesteps, num_input)), y: y_valid[:1000]}
+        feed_dict_valid = {x: x_valid[:1000].reshape((-1, max_time, input_dim)), y: y_valid[:1000]}
         loss_valid, acc_valid = sess.run([loss, accuracy], feed_dict=feed_dict_valid)
         print('---------------------------------------------------------')
         print("Epoch: {0}, validation loss: {1:.2f}, validation accuracy: {2:.01%}".
@@ -87,7 +87,7 @@ with tf.Session() as sess:
     # Test the network after training
     # Accuracy
     x_test, y_test = load_data(mode='test')
-    feed_dict_test = {x: x_test[:1000].reshape((-1, timesteps, num_input)), y: y_test[:1000]}
+    feed_dict_test = {x: x_test[:1000].reshape((-1, max_time, input_dim)), y: y_test[:1000]}
     loss_test, acc_test = sess.run([loss, accuracy], feed_dict=feed_dict_test)
     print('---------------------------------------------------------')
     print("Test loss: {0:.2f}, test accuracy: {1:.01%}".format(loss_test, acc_test))

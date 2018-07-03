@@ -29,14 +29,14 @@ def bias_variable(shape):
                            initializer=initial)
 
 
-def RNN(x, weights, biases, timesteps, num_hidden):
+def RNN(x, weights, biases, max_time, num_hidden):
 
     # Prepare data shape to match `rnn` function requirements
     # Current data input shape: (batch_size, timesteps, n_input)
     # Required shape: 'timesteps' tensors list of shape (batch_size, n_input)
 
     # Unstack to get a list of 'timesteps' tensors of shape (batch_size, n_input)
-    x = tf.unstack(x, timesteps, 1)
+    x = tf.unstack(x, max_time, 1)
 
     # Define a rnn cell with tensorflow
     # rnn_cell = rnn.BasicRNNCell(num_hidden)
