@@ -36,7 +36,5 @@ def LSTM(x, weights, biases, num_hidden):
     """
     cell = tf.nn.rnn_cell.LSTMCell(num_hidden)
     outputs, states = tf.nn.dynamic_rnn(cell, x, dtype=tf.float32)
-    # val = tf.transpose(outputs, [1, 0, 2])
-    # last = tf.gather(val, int(val.get_shape()[0]) - 1)
     out = tf.matmul(outputs[:, -1, :], weights) + biases
     return out

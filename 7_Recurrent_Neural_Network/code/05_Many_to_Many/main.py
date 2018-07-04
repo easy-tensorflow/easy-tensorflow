@@ -34,8 +34,8 @@ y_train = np.array([[1, 3, 8, 14],
 x_test = np.array([[[1], [2], [3], [4]],
                    [[4], [5], [6], [7]]])
 
-y_test = np.array([[[1], [3], [6], [10]],
-                   [[4], [9], [15], [22]]])
+y_test = np.array([[1, 3, 6, 10],
+                   [4, 9, 15, 22]])
 
 with tf.Session() as sess:
     sess.run(init)
@@ -46,7 +46,6 @@ with tf.Session() as sess:
     # Test
     y_pred = sess.run(pred_out, feed_dict={x: x_test})
 
-    for i, x in enumerate(x_test):
-        print("When the input is {}".format(x))
-        print("The ground truth output should be {}".format(y_test[i]))
-        print("And the model thinks it is {}\n".format(y_pred[i]))
+    for i, x in enumerate(y_test):
+        print("When the ground truth output is {}, the model thinks it is {}"
+              .format(y_test[i], y_pred[i]))
