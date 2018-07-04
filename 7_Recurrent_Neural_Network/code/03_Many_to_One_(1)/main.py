@@ -4,9 +4,9 @@ from ops import *
 from utils import next_batch
 
 # Data Dimensions
-input_dim = 1  # input dimension
-seq_max_len = 4  # sequence maximum length
-out_dim = 1  # output dimension
+input_dim = 1           # input dimension
+seq_max_len = 4         # sequence maximum length
+out_dim = 1             # output dimension
 
 # Parameters
 learning_rate = 0.01    # The optimization initial learning rate
@@ -15,7 +15,7 @@ batch_size = 10         # batch size
 display_freq = 1000     # Frequency of displaying the training results
 
 # Network Configuration
-num_hidden_units = 10  # number of hidden units
+num_hidden_units = 10   # number of hidden units
 
 # Create the graph for the model
 # Placeholders for inputs(x), input sequence lengths (seqLen) and outputs(y)
