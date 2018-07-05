@@ -6,7 +6,7 @@ In this tutorial we will learn about implementing Recurrent Neural Network in Te
 RNN's charactristics makes it suitable for many different tasks; from simple classification to machine translation, language modelling, sentiment analysis, etc.
 
 
-![NN classifier](Tutorials/files/04.png)
+![RNN](Tutorials/files/01.png)
 
 ___Fig. 1-___ Sample RNN structure (Left) and its unfolded representation (Right)
 

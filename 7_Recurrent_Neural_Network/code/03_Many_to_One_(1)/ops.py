@@ -34,7 +34,7 @@ def LSTM(x, weights, biases, num_hidden):
     :param biases: vector of fully-connected output layer biases
     :param num_hidden: number of hidden units
     """
-    cell = tf.nn.rnn_cell.LSTMCell(num_hidden)
+    cell = tf.nn.rnn_cell.BasicRNNCell(num_hidden)
     outputs, states = tf.nn.dynamic_rnn(cell, x, dtype=tf.float32)
     out = tf.matmul(outputs[:, -1, :], weights) + biases
     return out
