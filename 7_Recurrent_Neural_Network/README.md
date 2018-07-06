@@ -23,9 +23,9 @@ In this series of tutorials, our goal is __not__ to teach how RNNs work, but to 
 We strongly suggest you to follow our tutorials one after the other; especially start by reading the first tutorial where we explain the notations that we are going to use through out this series:
 
 - [Notations](https://github.com/easy-tensorflow/easy-tensorflow/blob/master/7_Recurrent_Neural_Network/Tutorials/01_Notations.ipynb)
-- [Vanilla RNN for Digit Classification](https://github.com/easy-tensorflow/easy-tensorflow/blob/master/7_Recurrent_Neural_Network/Tutorials/05_Vanilla_RNN_for_Classification.ipynb)
+- [Vanilla RNN for Digit Classification](https://github.com/easy-tensorflow/easy-tensorflow/blob/master/7_Recurrent_Neural_Network/Tutorials/06_Vanilla_RNN_for_Classification.ipynb)
 
-- [Bidirectional RNN for Digit Classification](https://github.com/easy-tensorflow/easy-tensorflow/blob/master/7_Recurrent_Neural_Network/Tutorials/06_Bidirectional_RNN_for_Classification.ipynb)
+- [Bidirectional RNN for Digit Classification](https://github.com/easy-tensorflow/easy-tensorflow/blob/master/7_Recurrent_Neural_Network/Tutorials/07_Bidirectional_RNN_for_Classification.ipynb)
 
 ## References:
 * [www.tensorflow.com](www.tensorflow.com)

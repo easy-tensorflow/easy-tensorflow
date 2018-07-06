@@ -27,7 +27,7 @@ def bias_variable(shape):
                            initializer=initial)
 
 
-def LSTM(x, weights, biases, num_hidden):
+def RNN(x, weights, biases, num_hidden):
     """
     :param x: inputs of size [batch_size, max_time, input_dim]
     :param weights: matrix of fully-connected output layer weights

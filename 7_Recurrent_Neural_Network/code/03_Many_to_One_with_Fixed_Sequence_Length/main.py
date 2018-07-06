@@ -29,7 +29,7 @@ W = weight_variable(shape=[num_hidden_units, out_dim])
 b = bias_variable(shape=[out_dim])
 
 # Network predictions
-pred_out = LSTM(x, W, b, num_hidden_units)
+pred_out = RNN(x, W, b, num_hidden_units)
 
 # Define the loss function (i.e. mean-squared error loss) and optimizer
 cost = tf.reduce_mean(tf.square(pred_out - y))
