@@ -21,10 +21,10 @@ def bias_variable(shape):
     :param shape: bias variable shape
     :return: initialized bias variable
     """
-    initial = tf.constant(0., shape=shape, dtype=tf.float32)
+    initer = tf.constant(0., shape=shape, dtype=tf.float32)
     return tf.get_variable('b',
                            dtype=tf.float32,
-                           initializer=initial)
+                           initializer=initer)
 
 
 def LSTM(x, weights, biases, num_hidden):
