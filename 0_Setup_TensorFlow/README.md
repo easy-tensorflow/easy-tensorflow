@@ -22,7 +22,7 @@ TensorFlow comes with two versions.
 
 To use the GPU version, you should make sure your machine has a cuda enabled GPU and both CUDA-tooklit and cuDNN are installed on your machine properly.
 
-__Follow [this](0_CUDA_cuDNN.md) instruction to install the CUDA-toolkit and cuDNN library.
+__Follow [this](0_CUDA_cuDNN.md) instruction to install the CUDA-toolkit and cuDNN library.__
 
 ## 1. Python
 #### 1.1. Python programing language

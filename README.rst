@@ -86,7 +86,7 @@ installing many side packages and libraries and experienced lots of problems and
 
 In order to install TensorFlow please refer to the following link:
 
-.. _TensorFlow Installation: http://www.easy-tensorflow.com/install
+.. _TensorFlow Installation: http://easy-tensorflow.com/tf-tutorials/basics/install
 
 * `TensorFlow Installation`_
 
