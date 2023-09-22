@@ -17,7 +17,7 @@ It also helps us to summerize important parameters (such as wieghts, biases, act
 <img src="https://github.com/easy-tensorflow/easy-tensorflow/raw/master/4_Tensorboard/Tutorials/files/scalar_summaries.png" alt="centered image" width="600">
 </p>
 
-We can also visualize the high dimensional tensors in lower dimension spaces using embedding visualization tooklit in tensorflo.
+We can also visualize the high dimensional tensors in lower dimension spaces using embedding visualization tooklit in tensorflow.
 <p align="center">
 <img src="https://github.com/easy-tensorflow/easy-tensorflow/raw/master/4_Tensorboard/Tutorials/files/embedding.gif" alt="centered image" width="600">
 </p>
