@@ -1,25 +1,18 @@
 
 # How to setup TensorFlow on your Machine
-TIn this set of tutorials, we explain how to setup your machine to run __TensorFlow__ codes "step by step".
+In this set of tutorials, we explain how to setup your machine to run __TensorFlow__ codes "step by step". For each step, we would need to know what specific version of the software we would need for the TensorFlow version we are going to install. We can check the list of the tested build configurations for each TensorFlow version from [https://www.tensorflow.org/install/source#gpu].
 
-### What is TensorFlow?
-TensorFlow is a machine learning / deep learning library developed by Google that ...
+For example, for `tensorflow-2.10.0` we need:
 
-[![ALT TEXT](http://img.youtube.com/vi/oZikw5k_2FM/0.jpg)](http://www.youtube.com/watch?v=oZikw5k_2FM "What is TensorFlow")
+- __python 3.7__ to __python3.10__
+- __CUDA toolkit 11.2__
+- __cuDNN 8.1__
 
-### Why TensorFlow?
-Deep learning has found it's way to different branches of science. Well, let's see some applications of TensorFlow...
-[![ALT TEXT](http://img.youtube.com/vi/mWl45NkFBOc/0.jpg)](http://www.youtube.com/watch?v=mWl45NkFBOc "Why TensorFlow")
 
-Similar to many other libraries, we tried installing many side packages and libraries and experienced lots of problems and errors. We finally came up with a general solution and recommend installing the following libraries and packages as the __best way__ around it.
-
-## 1. Python
-#### 1.1. Python programing language
+## 1. Python / Conda
 TensorFlow has several APIs (Application Program Interface). But python API is the most complete and easiest to use <sup id="a1">[1](#f1)</sup>
-. Python comes pre-installed with most Linux and Mac distributions. However, here we will install the python via Miniconda__ distribution because it gives the flexibility to create __multiple environments__ for different versions of python and libraries.
+. Python comes pre-installed with most Linux and Mac distributions. However, here we will install the python via __Miniconda__ distribution because it gives the flexibility to create __multiple environments__ for different versions of python and libraries.
 
-
-#### 1.2. Package manager
 To run TensorFlow, you need to install the package. packages are also called libraries. So, you need to have a __package management system__. There are 2 famous package management systems:
 1. __Pip:__ is the default package management system that comes with python. Pip installs python packages only and builds from the source. So, if you want to install a package, you have to make sure you have all the dependencies. For example, if you want to install _tflearn_ package, you have to make sure you have already installed _tensorflow_. Otherwise, you will get errors running _tflearn_ codes.
 
@@ -55,9 +48,7 @@ import tensorflow as tf
 a = tf.constant("Hello from TensorFlow")
 tf.print(a)
 ```
-```python
 
-```
 It must print out `Hello from TensorFlow`.
 
 ### Final note

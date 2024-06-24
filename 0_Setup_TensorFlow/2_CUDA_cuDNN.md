@@ -21,9 +21,9 @@ For example, for `tensorflow-2.10.0` we will need the following versions:
 
 You can install CUDA & cuDNN in two ways:
 
-__I.  Install from scratch on OS:__ good for installing single version of TensorFlow
+__I. Install using conda:__ good for installing multiple versions of TensorFlow
 
-__II. Install using conda:__ good for installing multiple versions of TensorFlow
+__II.  Install from scratch on OS:__ good for installing single version of TensorFlow
 
 
 Installing from scratch might be challenging but it gaurranties finding all the versions once you successfully install, it will be robust. On the other hand, installing using conda is easy but you might not be able to find the specific version.
@@ -31,7 +31,49 @@ Installing from scratch might be challenging but it gaurranties finding all the 
 We will provide the instruction for both but __we recommend installing using conda__.
 
 
-# I. Install from scratch
+# I. Install using conda
+
+__1.__ Open Terminal (on Linux) or Command Prompt (on Windows) and install `cudatoolkit` package from `nvidia` or `conda-forge` channels:
+
+  - First check the available versions of `cudatoolkit` package: \
+    `conda search cudatoolkit=11.2 -c nvidia -c conda-forge`
+    ```bash
+    Loading channels: done
+    # Name                       Version           Build  Channel
+    cudatoolkit                   11.2.0      h608a323_7  conda-forge
+    cudatoolkit                   11.2.0      h608a323_8  conda-forge
+    cudatoolkit                   11.2.1      h7a7aa70_8  conda-forge
+    cudatoolkit                   11.2.2     h7d7167e_10  conda-forge
+    cudatoolkit                   11.2.2     h7d7167e_11  conda-forge
+    cudatoolkit                   11.2.2     h7d7167e_12  conda-forge
+    cudatoolkit                   11.2.2     h7d7167e_13  conda-forge
+    cudatoolkit                   11.2.2     h933977f_10  conda-forge
+    cudatoolkit                   11.2.2      h933977f_8  conda-forge
+    cudatoolkit                   11.2.2      h933977f_9  conda-forge
+    ```
+    
+  - Now install the desired version of `cudatoolkit` package: \
+  `conda install cudatoolkit=11.2 -c conda-forge -y`
+
+__2.__ Install `cudnn` package from `nvidia` and `conda-forge` channels:
+
+  - First check the available versions of `cudnn` package: \
+    `conda search cudnn=8.1 -c nvidia -c conda-forge` 
+    ```bash
+    Loading channels: done
+    # Name                       Version           Build  Channel
+    cudnn                       8.1.0.77      h37a4af2_0  conda-forge
+    cudnn                       8.1.0.77      h3e0f4f4_0  conda-forge
+    ```
+  
+  - Now install the desired version of `cudnn` package: \
+  `conda install cudnn=8.1 -c conda-forge -y`
+
+__*Note:__ if you are installing the packages in a conda environment, don't forget to activate the environment before installing conda packages:
+
+`conda activate tensorflow`
+
+# II. Install from scratch
 
 ## Windows:
 
@@ -90,18 +132,3 @@ __3.__ Install libcupti-dev:
 ```bash
 sudo apt-get install libcupti-dev
  ```
-
-# II. Install using conda
-
-__1.__ Open Terminal (on Linux) or Command Prompt (on Windows) and install `cudatoolkit` package from `nvidia` or `conda-forge` channels:
-
-
-` conda install cudatoolkit=11.2`
-
-__2.__ Install `cudnn` package from `nvidia` and `conda-forge` channels:
-
-`conda search cudnn=8.1 -c nvidia -c conda-forge`
-
-__*Note:__ if you are installing the packages in a conda environment, don't forget to activate the environment before installing conda packages:
-
-`conda activate tensorflow`
